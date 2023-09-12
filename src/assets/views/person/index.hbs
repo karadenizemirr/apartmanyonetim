@@ -1,0 +1,173 @@
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <button id="add_person_button" class="btn btn-primary mb-15" type="button">
+                    <i class="icon wb-plus" aria-hidden="true"></i> Kişi Ekle
+                </button>
+                <div class="table-responsive">
+                    <table class="table table-hover table-vcenter table-striped" cellspacing="0" id="person_table">
+                        <thead>
+                            <tr>
+                                <th>Adı</th>
+                                <th>Soyadı</th>
+                                <th>Blok</th>
+                                <th>Kat</th>
+                                <th>Daire</th>
+                                <th>Durumu</th>
+                                <th>Telefon</th>
+                                <th>Email</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each persons}}
+                            <tr class="gradeA">
+                                <td>{{this.name}}</td>
+                                <td>{{this.surname}}</td>
+                                <td>
+                                    {{#each this.builds}}
+
+                                    {{this.name}}
+
+                                    {{/each}}
+                                </td>
+                                <td>
+                                    {{#each builds}}
+
+                                    {{this.flats}}
+
+                                    {{/each}}
+                                </td>
+                                <td>
+                                    {{#each this.builds}}
+
+                                    {{this.floor}}
+
+                                    {{/each}}
+                                </td>
+                                <td>{{this.isActive}}</td>
+                                <td>{{this.phone}}</td>
+                                <td>{{this.email}}</td>
+                                <td class="actions">
+                                    <a href="/person/detail/{{this.id}}"
+                                        class="btn btn-sm btn-icon on-default m-r-5 button-edit" data-toggle="tooltip"
+                                        data-original-title="Edit" style="cursor: pointer;"><i class="icon-pencil"
+                                            aria-hidden="true"></i></a>
+                                    <button class="btn btn-sm btn-icon on-default button-remove" data-toggle="tooltip"
+                                        data-original-title="Remove"><i class="icon-trash"
+                                            aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="staticBackdropLabel">Kişi Ekle</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="add_person_form">
+                    <div class="row mb-4">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Adı" name="name">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Soyadı" name="surname">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Telefon Numarası" name="phone">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Telefon Numarası (Yedek)"
+                                name="phone_spare">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="E-Mail Adresi" name="email">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="E-Mail Adresi (Yedek)"
+                                name="email_spare">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="T.C ya da Pasaport Numarası"
+                                name="identify_number">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Araç Plakası" name="car_plate">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Adres" name="address">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <select name="language" id="" class="form-control">
+                                <option>İletişim Dili</option>
+                                <option value="tr">Türkçe</option>
+                                <option value="en">İngilizce</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select name="education_status" id="" class="form-control">
+                                <option>Eğitim Durumu</option>
+                                <option value="ilkokul">İlkokul</option>
+                                <option value="lise">Lise</option>
+                                <option value="universite">Üniversite</option>
+                                <option value="yl">Yüksek Lisans</option>
+                                <option value="doktora">Doktora</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Mesleği" name="jop">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-primary">Kişi Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#add_person_button').on('click', function () {
+            $('#staticBackdrop').modal('show')
+        })
+
+        $('#add_person_form').submit(function (e) {
+            e.preventDefault()
+            $.ajax({
+                type: "POST",
+                url: "/person",
+                data: $(this).serialize(),
+                success: function (response) {
+                    $('#staticBackdrop').modal('hide')
+                    window.location.reload()
+                }
+            })
+        })
+    })
+</script>

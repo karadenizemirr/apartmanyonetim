@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="Crush it Able The most popular Admin Dashboard template and ui kit">
+    <meta name="author" content="PuffinTheme the theme designer">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <title>{{title}} - Apartman Yönetim Sistemi</title>
+
+    <!-- Bootstrap Core and vandor -->
+    <link rel="stylesheet" href="/public/plugins/bootstrap/css/bootstrap.min.css" />
+    <!-- Plugins css -->
+    <link rel="stylesheet" href="/public/plugins/datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/public/plugins/datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
+    <!-- Bootstrap Core and vandor -->
+    <link rel="stylesheet" href="/public/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />
+    <link rel="stylesheet" href="/public/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="/public/plugins/multi-select/css/multi-select.css">
+    <link rel="stylesheet" href="/public/plugins/dropify/css/dropify.min.css">
+    <style>
+        td.details-control {
+            background: url('/public/images/details_open.png') no-repeat center center;
+            cursor: pointer;
+        }
+
+        tr.shown td.details-control {
+            background: url('/public/images/details_close.png') no-repeat center center;
+        }
+    </style>
+    <!-- Core css -->
+    <link rel="stylesheet" href="/public/css/main.css" />
+    <link rel="stylesheet" href="/public/css/theme4.css" id="stylesheet" />
+    <!-- jQuery and bootstrtap js -->
+    <script src="/public/bundles/lib.vendor.bundle.js"></script>
+</head>
+
+<body class="font-opensans">
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+        </div>
+    </div>
+
+    {{#if isLogin}}
+    <!-- Start main html -->
+    <div id="main_content">
+
+        <!-- Small icon top menu -->
+        <div id="header_top" class="header_top">
+            <div class="container">
+                <div class="hleft">
+                    <div class="dropdown">
+                        <a href="javascript:void(0)" class="nav-link user_btn"><img class="avatar"
+                                src="/public/images/user.png" alt="" /></a>
+                        <a href="/" class="nav-link icon"><i class="fa fa-search"></i></a>
+                        <a href="/" class="nav-link icon"><i class="fa fa-home"></i></a>
+                    </div>
+                </div>
+                <div class="hright">
+                    <div class="dropdown">
+                        <a href="/user/logout" class="nav-link icon settingbar"><i class="fa fa-sign-out"></i></a>
+                        <a href="javascript:void(0)" class="nav-link icon menu_toggle"><i class="fa fa-navicon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- start Main menu -->
+        <div id="left-sidebar" class="sidebar">
+            <div class="d-flex justify-content-between brand_name">
+                <h5 class="brand-name">AYS v1.0</h5>
+                <div class="theme_btn">
+                    <a class="theme1" data-toggle="tooltip" title="Theme Radical" href="#"
+                        onclick="setStyleSheet('/public/css/theme1.css', 0);"></a>
+                    <a class="theme2" data-toggle="tooltip" title="Theme Turmeric" href="#"
+                        onclick="setStyleSheet('/public/css/theme2.css', 0);"></a>
+                    <a class="theme3" data-toggle="tooltip" title="Theme Caribbean" href="#"
+                        onclick="setStyleSheet('/public/css/theme3.css', 0);"></a>
+                    <a class="theme4" data-toggle="tooltip" title="Theme Cascade" href="#"
+                        onclick="setStyleSheet('/public/css/theme4.css', 0);"></a>
+                </div>
+            </div>
+            <div class="input-icon">
+                <span class="input-icon-addon">
+                    <i class="fe fe-search"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Ara...">
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="all-tab">
+                    <nav class="sidebar-nav">
+                        <ul class="metismenu ci-effect-1">
+                            <li class="g_heading">Anamenü</li>
+                            <li><a href="/"><i class="icon-calendar"></i><span data-hover="Anasayfa">Anasayfa</span></a>
+                            </li>
+                            <li><a href="/person"><i class="icon-speech"></i><span
+                                        data-hover="Kişiler">Kişiler</span></a></li>
+
+                            <li class="g_heading">Finansal İşlemler</li>
+                            <li><a href="/dept"><i class="icon-puzzle"></i><span
+                                        data-hover="Borçlandırma">Borçlandırma</span></a></li>
+                            <li><a href="/income"><i class="icon-puzzle"></i><span data-hover="Gelir">Gelir</span></a>
+                            </li>
+                            <li><a href="/expense"><i class="icon-puzzle"></i><span data-hover="Gider">Gider</span></a>
+                            </li>
+                            <li><a href="/till"><i class="icon-puzzle"></i><span data-hover="Kasa">Kasa</span></a></li>
+                            <li class="g_heading">Ayarlar</li>
+                            <li><a href="page-maps.html"><i class="icon-map"></i><span
+                                        data-hover="Kullanıcı Ayarları">Kullanıcı Ayarları</span></a></li>
+                            <li><a href="/build"><i class="icon-speech"></i><span
+                                        data-hover="Blok ve Daire Ayarları">Blok ve Daire Ayarları</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- start main body part-->
+        <div class="page">
+
+            <!-- start body header -->
+            <div id="page_top" class="section-body">
+                <div class="container-fluid">
+                    <div class="page-header">
+                        <div class="left">
+                            <h1 class="page-title">{{title}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-body">
+                <div class="container-fluid">
+                    {{{body}}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div id="main_content">
+        {{{body}}}
+    </div>
+    {{/if}}
+
+
+
+    <!-- start plugin js file  -->
+    <script src="/public/bundles/dataTables.bundle.js"></script>
+    <script src="/public/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script src="/public/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/public/bundles/apexcharts.bundle.js"></script>
+
+    <!-- Start core js and page js -->
+    <script src="/public/js/core.js"></script>
+    <script src="/public/custom/js/table/datatable.js"></script>
+    <script src="/public/custom/js/chart/apex.js"></script>
+
+</body>
+
+</html>

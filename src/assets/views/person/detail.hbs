@@ -1,0 +1,203 @@
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Kişi Detayları</h3>
+
+                        <div class="card-options">
+                            <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i
+                                    class="fe fe-maximize"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form action="/person/detail/update/{{person.id}}" method="post">
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Adı" autocomplete="off"
+                                        value="{{person.name}}" name="name">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Soyadı" autocomplete="off"
+                                        value="{{person.surname}}" name="surname">
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Telefon Nu" autocomplete="off"
+                                        value="{{person.phone}}" name="phone">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Telefon Nu-2"
+                                        autocomplete="off" value="{{person.phone_spare}}" name="phone_spare">
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Email" autocomplete="off"
+                                        value="{{person.email}}" name="email">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Emai-2" autocomplete="off"
+                                        value="{{person.email_spare}}" name="email_spare">
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Araç Plakası"
+                                        autocomplete="off" value="{{person.car_plate}}" name="car_plate">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Dil" autocomplete="off"
+                                        value="{{person.language}}" name="language">
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Eğitim Durumu"
+                                        autocomplete="off" value="{{person.education_status}}" name="education_status">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Mesleği" autocomplete="off"
+                                        value="{{person.jop}}" name="jop">
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Adres" autocomplete="off"
+                                        value="{{person.address}}" name="address">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="T.C & Pasaport Nu."
+                                        autocomplete="off" value="{{person.identify_number}}" name="identify_number">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button class="btn btn-primary btn-sm">
+                                        Detayları Güncelle
+                                    </button>
+                                    <a href="/person/delete/{{person.id}}" class="btn btn-danger btn-sm">
+                                        Kullanıcıyı Sil
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daire Detayları</h3>
+
+                        <div class="card-options">
+                            <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i
+                                    class="fe fe-maximize"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form action="/person/build/{{person.id}}" method="post">
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Blok" name="name"
+                                        style="text-transform: uppercase;" autocomplete="off"
+                                        value="{{person_build.name}}">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Kat" name="floor"
+                                        autocomplete="off" value="{{person_build.flats}}">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Daire" name="flats"
+                                        autocomplete="off" value="{{person_build.floor}}">
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <select name="isStatus" id="" class="form-control">
+                                        <option value="kiracı">Kiracı</option>
+                                        <option value="malik">Ev Sahibi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button class="btn btn-primary btn-sm" type="submit">
+                                        Daire Detaylarını Güncelle
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Borç İşlemleri</h3>
+
+                        <div class="card-options">
+                            <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i
+                                    class="fe fe-maximize"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table text-nowrap mb-0">
+                                <thead class="text-center">
+                                    <tr>
+                                        <th>Borç Tarihi</th>
+                                        <th>Borç Adı</th>
+                                        <th>Borç Miktarı</th>
+                                        <th>Borç Durumu</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    {{#each person_depts}}
+                                    <tr>
+                                        <form action="/dept/editByPerson/{{...person.id}}" method="post">
+                                            <input type="text" hidden value={{this.id}} name="dept_id">
+                                            <td>
+                                                <input type="text" class="form-control" value="{{this.date}}" disabled>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" value="{{this.name}}"
+                                                    name="type" disabled>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" value="{{this.price}}"
+                                                    name="price" disabled>
+                                            </td>
+                                            <td>
+                                                <select name="isStatus" id="" class="form-control">
+                                                    <option value="0" {{selectOption this.isStatus 1}}>Ödenmedi</option>
+                                                    <option value="1" {{selectOption this.isStatus 0}}>Ödendi</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row bg-transparent"
+                                                    data-toggle="tooltip" title="Düzenle"><i
+                                                        class="icon-plus"></i></button>
+                                                <a href="/person/dept/delete/{{...person.id}}"
+                                                    class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row bg-transparent"
+                                                    data-toggle="tooltip" title="Sil"><i class="icon-trash"></i></a>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

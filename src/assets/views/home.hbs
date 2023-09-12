@@ -1,0 +1,42 @@
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div>Toplam Borç</div>
+                        <div class="py-4 m-0 text-center h1 text-success">{{total_dept}} TL</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div>Toplam Gelir</div>
+                        <div class="py-4 m-0 text-center h1 text-info">{{total_income}} TL</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div>Toplam Gider</div>
+                        <div class="py-4 m-0 text-center h1 text-warning">{{total_expense}} TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            {{#each tills}}
+            <div class="col-lg-6 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div>{{this.name}}</div>
+                        <div class="py-4 m-0 text-center h1 text-info">{{this._balance}} TL</div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

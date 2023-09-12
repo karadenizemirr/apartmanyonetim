@@ -1,0 +1,25 @@
+<div class="auth bg-white" style="color: black">
+    <div class="card p-3" style="border: 1px solid black;">
+        <div class="title" class="text-center">
+            <h4 class="text-center">
+                Apartman Yönetim Sistemi
+            </h4>
+        </div>
+        <div class="card-body shadow">
+            <div class="card-title text-center">Lütfen Giriş Yapınız</div>
+            <form action="/user/login" method="post">
+                <div class="form-group style2">
+                    <label class="form-label">Mail Adresi</label>
+                    <input type="email" class="form-control" placeholder="Mail Adresi" name="email" autocomplete="off">
+                </div>
+                <div class="form-group style2">
+                    <label class="form-label">Şifre</label>
+                    <input type="password" class="form-control" placeholder="Şifreniz" name="password" autocomplete="off">
+                </div>
+                <div class="form-footer">
+                    <button class="btn btn-primary btn-block" title="">Giriş Yap</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

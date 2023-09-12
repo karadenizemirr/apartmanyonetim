@@ -1,0 +1,106 @@
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Borç İşlemleri</h3>
+
+                        <div class="card-options">
+                            <a href="#" class="card-options-fullscreen"><i class="fe fe-plus"
+                                    id="add_build_button"></i></a>
+                            <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i
+                                    class="fe fe-maximize"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table text-nowrap mb-0">
+                                <thead class="text-center">
+                                    <tr>
+                                        <th>Blok Adı</th>
+                                        <th>Daire Sayısı</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    {{#each builds}}
+                                    <tr>
+                                        <form action="/build/edit/{{this.id}}" method="post">
+                                            <td>
+                                                <input type="text" class="form-control" value="{{this.name}}"
+                                                    name="name" style="text-transform: uppercase;" autocomplete="off">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" value="{{this.number_of_flats}}"
+                                                    name="number_of_flats" autocomplete="off">
+                                            </td>
+                                            <td>
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row bg-transparent"
+                                                    data-toggle="tooltip" title="Düzenle"><i
+                                                        class="icon-plus"></i></button>
+                                                <a href="/build/delete/{{this.id}}"
+                                                    class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row bg-transparent"
+                                                    data-toggle="tooltip" title="Sil"><i class="icon-trash"></i></a>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="add_build_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="staticBackdropLabel">Daire ve Blok Ekle</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="add_build_form">
+                    <div class="row mb-4">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Blok Adı" name="name"
+                                autocomplete="off" style="text-transform: uppercase;">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Daire Sayısı" name="number_of_flats"
+                                autocomplete="off" style="text-transform: uppercase;">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-primary">Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#add_build_button").click(function () {
+            $("#add_build_modal").modal("show");
+        });
+
+        $('#add_build_form').submit(function (e) {
+            e.preventDefault()
+            $.ajax({
+                url: '/build',
+                type: 'POST',
+                data: $(this).serialize(),
+
+            })
+        })
+    })
+</script>
